@@ -1,0 +1,71 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Курсовая работа. "SIMPLE-SCADA"</title>
+  <link rel="stylesheet" href="src/css/w3.css">
+  <link rel="stylesheet" href="src/css/style.css">
+  <link rel="stylesheet" href="src/css/font-awesome.css">
+  <script src="src/js/jquery-2.2.4.min.js"></script>
+  <style type="text/css"></style>>
+</head>
+<body>
+  <!-- Sidebar/menu -->
+  <nav class="w3-sidebar w3-blue w3-collapse w3-top w3-large w3-padding" style="z-index:3;width:300px;font-weight:bold;" id="mySidebar"><br>
+    <a href="javascript:void(0)" onclick="w3_close()" class="w3-button w3-hide-large w3-display-topleft" style="width:100%;font-size:22px">Закрыть</a>
+    <div class="w3-container">
+      <h3 class="w3-padding-64"><b>"SIMPLE-SCADA"</b></h3>
+    </div>
+    <div class="w3-bar-block">
+      <a href="#" onclick="w3_close('pages/home.html')" class="w3-bar-item w3-button w3-hover-white w3-xxlarge"><i class="fa fa-home"></i></a> 
+      <a href="#historyfact" onclick="w3_close('pages/historyfact.html')" class="w3-bar-item w3-button w3-hover-white">SIMPLE-SCADA</a> 
+      <a href="#wisit" onclick="w3_close('pages/wisit.html')" class="w3-bar-item w3-button w3-hover-white">
+	  Установка и настройка</a> 
+      <a href="#comparison" onclick="w3_close('pages/comparison.html')" class="w3-bar-item w3-button w3-hover-white">Пример работы </a>
+      <a href="#osob3" onclick="w3_close('pages/osob3.html')" class="w3-bar-item w3-button w3-hover-white">
+	  SIMPLE-SCADA и Arduino</a> 
+      <a href="#perspectives" onclick="w3_close('pages/perspectives.html')" class="w3-bar-item w3-button w3-hover-white">
+	  Задание</a>
+      <a href="#information" onclick="w3_close('pages/information.html')" class="w3-bar-item w3-button w3-hover-white">Источники информации</a>
+    </div>
+  </nav>
+
+  <!-- Top menu on small screens -->
+  <header class="w3-container w3-top w3-hide-large w3-blue w3-xlarge w3-padding">
+    <a href="javascript:void(0)" class="w3-button w3-blue w3-margin-right" onclick="w3_open()">☰</a>
+    <span>""</span>
+  </header>
+
+  <div class="w3-main" id="content"></div>
+
+  <script>
+    $( document ).ready( function() {
+      getDocContent('pages/home.html');
+    });
+    // Script to open and close sidebar
+    function w3_open() {
+        document.getElementById("mySidebar").style.display = "block";
+    }
+     
+    function w3_close(url) {
+        document.getElementById("mySidebar").style.display = "none";
+        if(url) {
+          getDocContent(url);
+        }
+    }
+
+    // AJAX Document Loading
+    function getDocContent(docUrl) {
+      $.ajax({
+        type:"GET",
+        dataType: 'html',
+        url: docUrl,
+        success: function(res){
+          $('#content').html(res);
+        }
+      });
+    }
+  </script>
+
+</body>
+</html>
